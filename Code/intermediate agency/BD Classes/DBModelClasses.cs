@@ -72,7 +72,7 @@ namespace intermediate_agency.BD_Classes
 
         public OrderStatusEnum Status { get; set; }
 
-        public ICollection<MerchandiseOrder> MerchOrders { get; }
+        public ICollection<MerchandiseOrder> MerchOrders { get; set; }
 
         public Order()
         {

@@ -4,9 +4,85 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:intermediate_agency"
+        
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Height" Value="20" />
+            <Setter Property="Width" Value="80" />
+            <Setter Property="Margin" Value="5" />
+        </Style>
+    </Window.Resources>
+    
     <Grid>
+        <TabControl>
+            <TabItem Header="Employee">
+                <StackPanel>
+                    <ListView Name="EmployeeList">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Name}">Name</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Phone}">Phone</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Post}">Position</GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <TextBlock Text="Разметка"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="New" />
+                        <Button Content="Edit" />
+                        <Button Content="Delete" />
+                        <Button Content="Show Orders" />
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+            
+            <TabItem Header="Customers">
+                <StackPanel>
+                    <ListView x:Name="CustomersList">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Name}">Name</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Phone}">Phone</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Level}">Priority</GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="New" />
+                        <Button Content="Edit" />
+                        <Button Content="Delete" />
+                        <Button Content="Show Orders" />
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+
+            <TabItem Header="Sellers">
+                <StackPanel>
+                    <ListView x:Name="SellersList">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Name}">Name</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Phone}">Phone</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Reliability}">Reliability</GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="New" />
+                        <Button Content="Edit" />
+                        <Button Content="Delete" />
+                        <Button Content="Show Offers" />
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+            
+            <TabItem Header="Orders"/>
+            <TabItem Header="Offers"/>
+            <TabItem Header="Merchandises"/>
+        </TabControl>
         
     </Grid>
 </Window>
