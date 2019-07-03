@@ -29,7 +29,6 @@
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <TextBlock Text="Разметка"/>
                     <StackPanel Orientation="Horizontal">
                         <Button Content="New" />
                         <Button Content="Edit" />
@@ -78,10 +77,65 @@
                     </StackPanel>
                 </StackPanel>
             </TabItem>
-            
-            <TabItem Header="Orders"/>
-            <TabItem Header="Offers"/>
-            <TabItem Header="Merchandises"/>
+
+            <TabItem Header="Orders">
+                <StackPanel>
+                    <ListView x:Name="OrdersList">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Owner.Name}">Customer</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Status}">Status</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Manager.Name}">Manager</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=MerchOrders.Count}">Positions</GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="New" />
+                        <Button Content="Edit" />
+                        <Button Content="Delete" />
+                        <Button Content="Show details" />
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Offers">
+                <StackPanel>
+                    <ListView x:Name="OffersList">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Owner.Name}">Seller</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Type.Name}">Type</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Price}">Price</GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="New" />
+                        <Button Content="Edit" />
+                        <Button Content="Delete" />
+                        <Button Content="Show details" />
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Merchandises">
+                <StackPanel>
+                    <ListView x:Name="MerchandisesList">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Name}">Name</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Orders.Count}">Orders Amount</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Offers.Count}">Offers Amount</GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="New" />
+                        <Button Content="Edit" />
+                        <Button Content="Delete" />
+                        <Button Content="Show details" />
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
         </TabControl>
         
     </Grid>

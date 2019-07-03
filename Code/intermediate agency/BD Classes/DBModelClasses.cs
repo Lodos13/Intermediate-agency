@@ -62,7 +62,7 @@ namespace intermediate_agency.BD_Classes
 
     public class Order
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         //1 to 0-1 no cascade delete
         public Employee Manager { get; set; }
@@ -107,7 +107,7 @@ namespace intermediate_agency.BD_Classes
 
     public class Offer
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         //TODO: Add verification that checks that the owner exists 
         public Seller Owner { get; set; }
@@ -121,7 +121,7 @@ namespace intermediate_agency.BD_Classes
 
     public class MerchandiseType
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
 
         public ICollection<Offer> Offers { get; set; }
