@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:intermediate_agency"
         
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Closing="Window_Closing">
     
     <Window.Resources>
         <Style TargetType="Button">
@@ -16,7 +16,14 @@
         </Style>
     </Window.Resources>
     
-    <Grid>
+    <StackPanel>
+        <Menu Height="25" VerticalAlignment="Top">
+            <MenuItem Header="DataBase" Height="25" >
+                <MenuItem x:Name="MenuRefillDb" Header="Refill DB" Click="MenuRefill_Click"/>
+                <MenuItem x:Name="MenuClearDb" Header="Refill DB" Click="MenuRefill_Click"/>
+            </MenuItem>
+        </Menu>
+        
         <TabControl>
             <TabItem Header="Employee">
                 <StackPanel>
@@ -136,7 +143,18 @@
                     </StackPanel>
                 </StackPanel>
             </TabItem>
+
+            <TabItem Header="People">
+                <ListView x:Name="PeopleList">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Name}">Name</GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Phone}">Phone</GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
         </TabControl>
-        
-    </Grid>
+
+    </StackPanel>
 </Window>

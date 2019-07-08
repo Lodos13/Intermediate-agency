@@ -12,7 +12,7 @@ using System.Collections.ObjectModel;
 
 namespace intermediate_agency.BD_Classes
 {
-    public abstract class AbstractPerson : INotifyPropertyChanged
+    public class Person : INotifyPropertyChanged
     {
         private string name;
         private string phone;
@@ -48,7 +48,7 @@ namespace intermediate_agency.BD_Classes
     }
 
 
-    public class Employee : AbstractPerson, INotifyPropertyChanged
+    public class Employee : Person
     {
         private PostEnum post;
         private ObservableCollection<Order> orders;
@@ -79,16 +79,11 @@ namespace intermediate_agency.BD_Classes
 
         //TODO: Add methods to add and remove Orders
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName]string prop = null)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
-        }
+        //INotifyPropertyChanged is realised in base class
     }
 
 
-    public class Customer : AbstractPerson, INotifyPropertyChanged
+    public class Customer : Person
     {
         private ClientLevelEnum level;
         private ObservableCollection<Order> orders;
@@ -119,16 +114,11 @@ namespace intermediate_agency.BD_Classes
 
         //TODO: Add methods to add and remove Orders
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName]string prop = null)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
-        }
+        //INotifyPropertyChanged is realised in base class
     }
 
 
-    public class Seller : AbstractPerson, INotifyPropertyChanged
+    public class Seller : Person
     {
         private SellerReliabilityEnum reliability;
         private ObservableCollection<Offer> offers;
@@ -158,12 +148,7 @@ namespace intermediate_agency.BD_Classes
 
         //TODO: Add methods to Add and Remove Offers
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName]string prop = null)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
-        }
+        //INotifyPropertyChanged is realised in base class
     }
 
 

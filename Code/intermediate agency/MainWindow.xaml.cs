@@ -17,6 +17,8 @@ using System.Windows.Shapes;
 using intermediate_agency.BD_Classes;
 using System.Collections.ObjectModel;
 
+using System.Data.Entity;
+
 namespace intermediate_agency
 {
     /// <summary>
@@ -24,6 +26,9 @@ namespace intermediate_agency
     /// </summary>
     public partial class MainWindow : Window
     {
+        AgencyDBContext db;
+
+        public ObservableCollection<Person> people { get; set; }
         public ObservableCollection<Employee> Employees {get; set;}
         public ObservableCollection<Customer> Customers { get; set; }
         public ObservableCollection<Seller> Sellers { get; set; }
@@ -36,6 +41,29 @@ namespace intermediate_agency
         {
             InitializeComponent();
 
+            db = new AgencyDBContext();
+
+            
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            db.Dispose();
+        }
+
+        private void MenuRefill_Click(object sender, RoutedEventArgs e)
+        {
+            db.people.RemoveRange(db.people);
+            db.Employees.RemoveRange(db.Employees);
+            db.Customers.RemoveRange(db.Customers);
+            db.Sellers.RemoveRange(db.Sellers);
+            db.Orders.RemoveRange(db.Orders);
+            db.Offers.RemoveRange(db.Offers);
+            db.MerchandiseOrders.RemoveRange(db.MerchandiseOrders);
+            db.MerchandiseTipes.RemoveRange(db.MerchandiseTipes);
+            db.SaveChanges();
+
+            
             Employees = new ObservableCollection<Employee>(){
                 new Employee{Id = 1, Name = "Serious Sam", Phone = "+7-900-333-33-33", Post = PostEnum.Manager},
                 new Employee{Id = 2, Name = "Gordan Freeman", Phone = "+7-999-999-99-99", Post = PostEnum.Manager},
@@ -79,8 +107,8 @@ namespace intermediate_agency
                 new MerchandiseOrder{Order = Orders[2], MerchType = MerchandiseTypes[1], Amount = 10},
                 new MerchandiseOrder{Order = Orders[2], MerchType = MerchandiseTypes[5], Amount = 25},
             };
-            
-            
+
+
             Orders[0].MerchOrders = new ObservableCollection<MerchandiseOrder>() {
                 MerchandiseOrders[0], MerchandiseOrders[1], MerchandiseOrders[2]
             };
@@ -132,12 +160,28 @@ namespace intermediate_agency
                 Offers[4]
             };
 
-            this.EmployeeList.ItemsSource = Employees;
-            this.CustomersList.ItemsSource = Customers;
-            this.SellersList.ItemsSource = Sellers;
-            this.OrdersList.ItemsSource = Orders;
-            this.OffersList.ItemsSource = Offers;
-            this.MerchandisesList.ItemsSource = MerchandiseTypes;
+            db.Employees.AddRange(Employees);
+            db.Customers.AddRange(Customers);
+            db.Sellers.AddRange(Sellers);
+            db.MerchandiseTipes.AddRange(MerchandiseTypes);
+            db.Orders.AddRange(Orders);
+            db.Offers.AddRange(Offers);
+            db.MerchandiseOrders.AddRange(MerchandiseOrders);
+            db.SaveChanges();
+            
+            this.EmployeeList.ItemsSource = db.Employees.Local;
+            this.CustomersList.ItemsSource = db.Customers.Local;
+            this.SellersList.ItemsSource = db.Sellers.Local;
+            this.OrdersList.ItemsSource = db.Orders.Local;
+            this.OffersList.ItemsSource = db.Offers.Local;
+            this.MerchandisesList.ItemsSource = db.MerchandiseTipes.Local;
+
+            people = new ObservableCollection<Person>();
+            foreach (var em in Employees) { people.Add(em); }
+            foreach (var c in Customers) { people.Add(c); }
+            foreach (var s in Sellers) { people.Add(s); }
+            this.PeopleList.ItemsSource = people;
+            
         }
     }
 }

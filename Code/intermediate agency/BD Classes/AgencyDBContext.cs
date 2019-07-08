@@ -12,8 +12,9 @@ namespace intermediate_agency.BD_Classes
 {
     public class AgencyDBContext : DbContext
     {
+        public DbSet<Person> people { get; set; }
         public DbSet<Employee> Employees { get; set; }
-        public DbSet<Customer> Clients { get; set; }
+        public DbSet<Customer> Customers { get; set; }
         public DbSet<Seller> Sellers { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Offer> Offers { get; set; }
@@ -36,7 +37,7 @@ namespace intermediate_agency.BD_Classes
         }
     }
 
-    public abstract class AbstractPersonConfig<TEntity> : EntityTypeConfiguration<TEntity> where TEntity : AbstractPerson
+    public abstract class AbstractPersonConfig<TEntity> : EntityTypeConfiguration<TEntity> where TEntity : Person
     {
        public AbstractPersonConfig()
         {
@@ -92,6 +93,7 @@ namespace intermediate_agency.BD_Classes
     {
         public MerchandiseOrderConfig()
         {
+            this.HasKey(m => new { m.OrderId, m.MerchTypeId });
             this.Property(m => m.Amount).IsRequired();
         }
     }
