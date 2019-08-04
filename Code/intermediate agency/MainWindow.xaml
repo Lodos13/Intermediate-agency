@@ -19,15 +19,26 @@
     <StackPanel>
         <Menu Height="25" VerticalAlignment="Top">
             <MenuItem Header="DataBase" Height="25" >
-                <MenuItem x:Name="MenuRefillDb" Header="Refill DB" Click="MenuRefill_Click"/>
-                <MenuItem x:Name="MenuClearDb" Header="Refill DB" Click="MenuRefill_Click"/>
+                <MenuItem x:Name="MenuRefillDb" Header="Refill DB" Command="{Binding RefillDBCommand}"/>
+                <MenuItem x:Name="MenuClearDb" Header="Clear DB" Command="{Binding ClearDBCommand}"/>
+                <MenuItem x:Name="MenuUpdateData" Header="Update data" Command="{Binding UpdateDataCommand}"/>
             </MenuItem>
         </Menu>
         
         <TabControl>
             <TabItem Header="Employee">
-                <StackPanel>
-                    <ListView Name="EmployeeList">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    
+                    <ListView Name="EmployeeList" ItemsSource="{Binding Employees}" Grid.Column="0" Grid.Row="0">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn DisplayMemberBinding="{Binding Path=Name}">Name</GridViewColumn>
@@ -36,18 +47,45 @@
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <StackPanel Orientation="Horizontal">
-                        <Button Content="New" />
-                        <Button Content="Edit" />
-                        <Button Content="Delete" />
-                        <Button Content="Show Orders" />
+                    <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="1">
+                        <Button Content="New" Command="{Binding AddPerson}" CommandParameter="Employee"/>
+                        <Button Content="Edit" Command="{Binding EditPerson}" CommandParameter="{Binding ElementName=EmployeeList, Path=SelectedItem}"/>
+                        <Button Content="Delete" Command="{Binding DeletePerson}" CommandParameter="{Binding ElementName=EmployeeList, Path=SelectedItem}"/>
                     </StackPanel>
-                </StackPanel>
+
+                    <GridSplitter Grid.Column="1" ShowsPreview="False" Width="3" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
+
+                    <ListView   Name ="EmployeeOrdersList"  Grid.Column="2" Grid.Row="0"
+                                ItemsSource="{Binding ElementName=EmployeeList, Path=SelectedItem.Orders}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Id}">Id</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Owner.Name}">Ordered by</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Status}">Status</GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <StackPanel Orientation="Horizontal" Grid.Column="2" Grid.Row="1">
+                        <Button Content="Add Order" Command="{Binding AddOrderToEmployee}" CommandParameter="{Binding ElementName=EmployeeList, Path=SelectedItem}"/>
+                        <Button Content="Remove Order" Command="{Binding RemoveOrderFromEmployee}" CommandParameter="{Binding ElementName=EmployeeOrdersList, Path=SelectedItem}"/>
+                    </StackPanel>
+
+                </Grid>
             </TabItem>
             
             <TabItem Header="Customers">
-                <StackPanel>
-                    <ListView x:Name="CustomersList">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <ListView x:Name="CustomersList" ItemsSource="{Binding Customers}" Grid.Column="0" Grid.Row="0">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn DisplayMemberBinding="{Binding Path=Name}">Name</GridViewColumn>
@@ -56,18 +94,33 @@
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <StackPanel Orientation="Horizontal">
-                        <Button Content="New" />
-                        <Button Content="Edit" />
-                        <Button Content="Delete" />
-                        <Button Content="Show Orders" />
+                    <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="1">
+                        <Button Content="New" Command="{Binding AddPerson}" CommandParameter="Customer"/>
+                        <Button Content="Edit" Command="{Binding EditPerson}" CommandParameter="{Binding ElementName=CustomersList, Path=SelectedItem}" />
+                        <Button Content="Delete" Command="{Binding DeletePerson}" CommandParameter="{Binding ElementName=CustomersList, Path=SelectedItem}"/>
                     </StackPanel>
-                </StackPanel>
+
+                    <ListView   Name ="CustomerOrdersList"  Grid.Column="2" Grid.Row="0"
+                                ItemsSource="{Binding ElementName=CustomersList, Path=SelectedItem.Orders}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Id}">Id</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Owner.Name}">Ordered by</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Status}">Status</GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <StackPanel Orientation="Horizontal" Grid.Column="2" Grid.Row="1">
+                        <Button Content="Add Order" Command="{Binding AddOrderToCustomer}" CommandParameter="{Binding ElementName=CustomersList, Path=SelectedItem}"/>
+                        <Button Content="Edit Order" Command="{Binding EditOrderToCustomer}" CommandParameter="{Binding ElementName=CustomerOrdersList, Path=SelectedItem}"/>
+                        <Button Content="Remove Order" Command="{Binding RemoveOrderFromCustomer}" CommandParameter="{Binding ElementName=CustomerOrdersList, Path=SelectedItem}"/>
+                    </StackPanel>
+                </Grid>
             </TabItem>
 
             <TabItem Header="Sellers">
                 <StackPanel>
-                    <ListView x:Name="SellersList">
+                    <ListView x:Name="SellersList" ItemsSource="{Binding Sellers}">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn DisplayMemberBinding="{Binding Path=Name}">Name</GridViewColumn>
@@ -77,9 +130,9 @@
                         </ListView.View>
                     </ListView>
                     <StackPanel Orientation="Horizontal">
-                        <Button Content="New" />
-                        <Button Content="Edit" />
-                        <Button Content="Delete" />
+                        <Button Content="New" Command="{Binding AddPerson}" CommandParameter="Seller"/>
+                        <Button Content="Edit" Command="{Binding EditPerson}" CommandParameter="{Binding ElementName=SellersList, Path=SelectedItem}" />
+                        <Button Content="Delete" Command="{Binding DeletePerson}" CommandParameter="{Binding ElementName=SellersList, Path=SelectedItem}"/>
                         <Button Content="Show Offers" />
                     </StackPanel>
                 </StackPanel>
@@ -87,7 +140,7 @@
 
             <TabItem Header="Orders">
                 <StackPanel>
-                    <ListView x:Name="OrdersList">
+                    <ListView x:Name="OrdersList" ItemsSource="{Binding Orders}">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn DisplayMemberBinding="{Binding Path=Owner.Name}">Customer</GridViewColumn>
@@ -107,7 +160,7 @@
             </TabItem>
             <TabItem Header="Offers">
                 <StackPanel>
-                    <ListView x:Name="OffersList">
+                    <ListView x:Name="OffersList" ItemsSource="{Binding Offers}">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn DisplayMemberBinding="{Binding Path=Owner.Name}">Seller</GridViewColumn>
@@ -126,26 +179,26 @@
             </TabItem>
             <TabItem Header="Merchandises">
                 <StackPanel>
-                    <ListView x:Name="MerchandisesList">
+                    <ListView x:Name="MerchandisesList" ItemsSource="{Binding MerchandiseTypes}">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn DisplayMemberBinding="{Binding Path=Name}">Name</GridViewColumn>
-                                <GridViewColumn DisplayMemberBinding="{Binding Path=Orders.Count}">Orders Amount</GridViewColumn>
-                                <GridViewColumn DisplayMemberBinding="{Binding Path=Offers.Count}">Offers Amount</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Orders.Count}">Ordered</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Offers.Count}">Offered</GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>
                     <StackPanel Orientation="Horizontal">
-                        <Button Content="New" />
-                        <Button Content="Edit" />
-                        <Button Content="Delete" />
+                        <Button Content="New" Command="{Binding AddMerchandise}"/>
+                        <Button Content="Edit" Command="{Binding EditMerchandise}" CommandParameter="{Binding ElementName=MerchandisesList, Path=SelectedItem}" />
+                        <Button Content="Delete" Command ="{Binding DeleteMerchandise}" CommandParameter="{Binding ElementName=MerchandisesList, Path=SelectedItem}" />
                         <Button Content="Show details" />
                     </StackPanel>
                 </StackPanel>
             </TabItem>
 
             <TabItem Header="People">
-                <ListView x:Name="PeopleList">
+                <ListView x:Name="PeopleList" ItemsSource="{Binding People}">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn DisplayMemberBinding="{Binding Path=Name}">Name</GridViewColumn>

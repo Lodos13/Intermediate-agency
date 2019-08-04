@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-E:\Anton\Programming\Intermediate-agency\Code\intermediate agency\obj\Debug\
+E:\Programming\CSharp\intermediate agency\Intermediate-agency\Code\intermediate agency\obj\Debug\
 intermediate_agency
 none
 false
 DEBUG;TRACE
-E:\Anton\Programming\Intermediate-agency\Code\intermediate agency\App.xaml
-11151548125
+E:\Programming\CSharp\intermediate agency\Intermediate-agency\Code\intermediate agency\App.xaml
+5-1029568306
 
-12-588280273
-16155114241
-MainWindow.xaml;
+18-1255871339
+171711082343
+EditMerchandiseWindow.xaml;EditOrderWindow.xaml;EditPersonWindow.xaml;MainWindow.xaml;SelectOrderWindow.xaml;
 
 False
 

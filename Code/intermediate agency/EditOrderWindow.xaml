@@ -1,0 +1,84 @@
+﻿<Window x:Class="intermediate_agency.EditOrderWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:intermediate_agency"
+        
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
+        
+        mc:Ignorable="d"
+        Title="EditOrderWindow" SizeToContent="Height" MaxHeight="800" Width="500" Name="TheWindow">
+
+    <Window.Resources>
+        <col:ArrayList x:Key="Statuses">
+            <sys:String>NotAccepted</sys:String>
+            <sys:String>InProgress</sys:String>
+            <sys:String>WaitingPayment</sys:String>
+            <sys:String>Fulfilled</sys:String>
+            <sys:String>Canceled</sys:String>
+            <sys:String>Failed</sys:String>
+        </col:ArrayList>
+        
+        
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" VerticalAlignment="Center">Customer name</TextBlock>
+        <TextBlock Grid.Row="1" VerticalAlignment="Center">Status</TextBlock>
+        <TextBlock Grid.Row="2" VerticalAlignment="Center">Manager</TextBlock>
+
+        <ComboBox Name="CustomerComboBox" 
+                  Grid.Row="0" Grid.Column="1" 
+                  ItemsSource ="{Binding Path=CustomerList}"
+                  SelectedItem ="{Binding Path=Order.Owner}">
+            <ComboBox.ItemTemplate>
+            <DataTemplate>
+                <TextBlock Text="{Binding Path=Name}"/>
+            </DataTemplate>
+        </ComboBox.ItemTemplate>
+        </ComboBox>
+        <ComboBox Name="OrderStatusComboBox" Grid.Row="1" Grid.Column="1"
+                  ItemsSource="{StaticResource Statuses}">
+        </ComboBox>
+        <TextBlock Grid.Row="2" Grid.Column="1" 
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   Text="{Binding Path=Order.Manager.Name}"/>
+        
+        <TextBlock Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Center">Order details</TextBlock>
+        <DataGrid Grid.Row="4" Grid.ColumnSpan="2"
+                  AutoGenerateColumns="False"
+                  ItemsSource="{Binding Path=Order.MerchOrders}">
+            <DataGrid.Columns>
+                <DataGridComboBoxColumn Width="300" Header="Merchandise"
+                                        ItemsSource="{Binding ElementName=TheWindow, Path=MerchList}"
+                                        SelectedItemBinding="{Binding Path=MerchType}"
+                                        SelectedValueBinding="{Binding Path=Name}"/>
+                <DataGridTextColumn Width="100" Header="Amount" Binding="{Binding Path=Amount}"/>
+                <DataGridCheckBoxColumn Width="100" Header="Complited" Binding="{Binding Path=IsComplited}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2">
+            <Button IsDefault="True" Click="Accept_Click" MinWidth="60" Margin="10">OK</Button>
+            <Button IsCancel="True" MinWidth="60" Margin="10">Отмена</Button>
+        </StackPanel>
+
+    </Grid>
+</Window>

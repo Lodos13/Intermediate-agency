@@ -1,0 +1,38 @@
+﻿<Window x:Class="intermediate_agency.SelectOrderWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:intermediate_agency"
+        mc:Ignorable="d"
+        Title="SelectOrder" SizeToContent="WidthAndHeight" MaxHeight="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <!--
+        <CheckBox Name="ShowOnlyFreeOrders" IsChecked="True" IsEnabled="False">Show only free orders.</CheckBox>
+        -->
+
+        <ListView Grid.Row="1" ItemsSource="{Binding Path=Orders}" SelectedItem="selectedOrder">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Id}">Id</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Owner.Name}">Client Name</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Status}">Order status</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Manager.Name}">Manager Name</GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+            
+
+        <StackPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Orientation="Horizontal">
+            <Button IsDefault="True" Click="Accept_Click" MinWidth="60" Margin="10">OK</Button>
+            <Button IsCancel="True" MinWidth="60" Margin="10">Отмена</Button>
+        </StackPanel>
+        
+    </Grid>
+</Window>

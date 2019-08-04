@@ -15,14 +15,6 @@ E:\Anton\Programming\Intermediate-agency\Code\intermediate agency\obj\Debug\inte
 E:\Anton\Programming\Intermediate-agency\Code\intermediate agency\obj\Debug\intermediate agency.csproj.GenerateResource.Cache
 E:\Anton\Programming\Intermediate-agency\Code\intermediate agency\obj\Debug\intermediate agency.exe
 E:\Anton\Programming\Intermediate-agency\Code\intermediate agency\obj\Debug\intermediate agency.pdb
-E:\Programming\CSharp\intermediate agency\Intermediate-agency\Code\intermediate agency\bin\Debug\intermediate agency.exe.config
-E:\Programming\CSharp\intermediate agency\Intermediate-agency\Code\intermediate agency\bin\Debug\intermediate agency.exe
-E:\Programming\CSharp\intermediate agency\Intermediate-agency\Code\intermediate agency\bin\Debug\intermediate agency.pdb
-E:\Programming\CSharp\intermediate agency\Intermediate-agency\Code\intermediate agency\bin\Debug\EntityFramework.dll
-E:\Programming\CSharp\intermediate agency\Intermediate-agency\Code\intermediate agency\bin\Debug\EntityFramework.SqlServer.dll
-E:\Programming\CSharp\intermediate agency\Intermediate-agency\Code\intermediate agency\bin\Debug\EntityFramework.xml
-E:\Programming\CSharp\intermediate agency\Intermediate-agency\Code\intermediate agency\bin\Debug\EntityFramework.SqlServer.xml
-E:\Programming\CSharp\intermediate agency\Intermediate-agency\Code\intermediate agency\obj\Debug\intermediate agency.csprojAssemblyReference.cache
 E:\Programming\CSharp\intermediate agency\Intermediate-agency\Code\intermediate agency\obj\Debug\MainWindow.g.cs
 E:\Programming\CSharp\intermediate agency\Intermediate-agency\Code\intermediate agency\obj\Debug\App.g.cs
 E:\Programming\CSharp\intermediate agency\Intermediate-agency\Code\intermediate agency\obj\Debug\intermediate agency_MarkupCompile.cache
@@ -32,6 +24,22 @@ E:\Programming\CSharp\intermediate agency\Intermediate-agency\Code\intermediate 
 E:\Programming\CSharp\intermediate agency\Intermediate-agency\Code\intermediate agency\obj\Debug\intermediate_agency.Properties.Resources.resources
 E:\Programming\CSharp\intermediate agency\Intermediate-agency\Code\intermediate agency\obj\Debug\intermediate agency.csproj.GenerateResource.cache
 E:\Programming\CSharp\intermediate agency\Intermediate-agency\Code\intermediate agency\obj\Debug\intermediate agency.csproj.CoreCompileInputs.cache
-E:\Programming\CSharp\intermediate agency\Intermediate-agency\Code\intermediate agency\obj\Debug\intermediate agency.csproj.CopyComplete
 E:\Programming\CSharp\intermediate agency\Intermediate-agency\Code\intermediate agency\obj\Debug\intermediate agency.exe
 E:\Programming\CSharp\intermediate agency\Intermediate-agency\Code\intermediate agency\obj\Debug\intermediate agency.pdb
+E:\Programming\CSharp\intermediate agency\Intermediate-agency\Code\intermediate agency\bin\Debug\intermediate agency.exe.config
+E:\Programming\CSharp\intermediate agency\Intermediate-agency\Code\intermediate agency\bin\Debug\intermediate agency.exe
+E:\Programming\CSharp\intermediate agency\Intermediate-agency\Code\intermediate agency\bin\Debug\intermediate agency.pdb
+E:\Programming\CSharp\intermediate agency\Intermediate-agency\Code\intermediate agency\bin\Debug\EntityFramework.dll
+E:\Programming\CSharp\intermediate agency\Intermediate-agency\Code\intermediate agency\bin\Debug\EntityFramework.SqlServer.dll
+E:\Programming\CSharp\intermediate agency\Intermediate-agency\Code\intermediate agency\bin\Debug\EntityFramework.xml
+E:\Programming\CSharp\intermediate agency\Intermediate-agency\Code\intermediate agency\bin\Debug\EntityFramework.SqlServer.xml
+E:\Programming\CSharp\intermediate agency\Intermediate-agency\Code\intermediate agency\obj\Debug\intermediate agency.csprojAssemblyReference.cache
+E:\Programming\CSharp\intermediate agency\Intermediate-agency\Code\intermediate agency\obj\Debug\intermediate agency.csproj.CopyComplete
+E:\Programming\CSharp\intermediate agency\Intermediate-agency\Code\intermediate agency\obj\Debug\EditPersonWindow.g.cs
+E:\Programming\CSharp\intermediate agency\Intermediate-agency\Code\intermediate agency\obj\Debug\EditPersonWindow.baml
+E:\Programming\CSharp\intermediate agency\Intermediate-agency\Code\intermediate agency\obj\Debug\EditMerchandiseWindow.g.cs
+E:\Programming\CSharp\intermediate agency\Intermediate-agency\Code\intermediate agency\obj\Debug\EditMerchandiseWindow.baml
+E:\Programming\CSharp\intermediate agency\Intermediate-agency\Code\intermediate agency\obj\Debug\SelectOrderWindow.g.cs
+E:\Programming\CSharp\intermediate agency\Intermediate-agency\Code\intermediate agency\obj\Debug\SelectOrderWindow.baml
+E:\Programming\CSharp\intermediate agency\Intermediate-agency\Code\intermediate agency\obj\Debug\EditOrderWindow.g.cs
+E:\Programming\CSharp\intermediate agency\Intermediate-agency\Code\intermediate agency\obj\Debug\EditOrderWindow.baml

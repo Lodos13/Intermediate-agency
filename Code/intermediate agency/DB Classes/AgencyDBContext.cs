@@ -8,22 +8,33 @@ using System.Threading.Tasks;
 
 using System.Data.Entity.ModelConfiguration;
 
-namespace intermediate_agency.BD_Classes
+namespace intermediate_agency
 {
+    /// <summary>
+    /// Class context to work with DB
+    /// </summary>
     public class AgencyDBContext : DbContext
     {
-        public DbSet<Person> people { get; set; }
+        #region DbSets
+
+        public DbSet<Person> People { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Seller> Sellers { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Offer> Offers { get; set; }
         public DbSet<MerchandiseOrder> MerchandiseOrders { get; set; }
-        public DbSet<MerchandiseType> MerchandiseTipes { get; set; }
+        public DbSet<MerchandiseType> MerchandiseTypes { get; set; }
+
+        #endregion
+
+        #region Constructor
 
         public AgencyDBContext() : base("DefaultConnection")
         {
         }
+
+        #endregion
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -36,6 +47,8 @@ namespace intermediate_agency.BD_Classes
             modelBuilder.Configurations.Add(new MerchandiseTypeConfig());
         }
     }
+
+    #region Connection configurations
 
     public abstract class AbstractPersonConfig<TEntity> : EntityTypeConfiguration<TEntity> where TEntity : Person
     {
@@ -118,4 +131,6 @@ namespace intermediate_agency.BD_Classes
             this.HasMany(m => m.Offers).WithRequired(o => o.Type).HasForeignKey(o => o.TypeId);
         }
     }
+
+    #endregion
 }

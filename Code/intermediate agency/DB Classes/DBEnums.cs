@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace intermediate_agency.BD_Classes
+namespace intermediate_agency
 {
     public enum PostEnum
     {

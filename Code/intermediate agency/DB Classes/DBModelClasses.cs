@@ -10,7 +10,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Collections.ObjectModel;
 
-namespace intermediate_agency.BD_Classes
+namespace intermediate_agency
 {
     public class Person : INotifyPropertyChanged
     {
